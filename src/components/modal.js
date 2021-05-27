@@ -2,7 +2,23 @@ import React from 'react'
 
 
 const Modal = ({ onClose = () => { }, children }) => {
+    // body: ["Pronto para manuseio","00:05:00","Saúdavel","CD, Polo, Retire na Loja"]
+    //THEAD
+    const arrayObject = [
+        {
+            status: "STATUS",
+            lastUpdate: "ÚLTIMA ATUALIZAÇÃO",
+            situation: "SITUAÇÃO",
+            affectedOperation: "OPERAÇÃO AFETADA"
+        }
+    ]
+
+
+
+
+
     return (
+
         <div className="modal">
             <div className="container">
                 <button className="close" onClick={onClose}>X</button>
@@ -13,12 +29,18 @@ const Modal = ({ onClose = () => { }, children }) => {
                 <div className="content">
                     <table className="table">
                         <thead className="tablehead">
-                            <tr>
-                                <th>STATUS</th>
-                                <th>ÚLTIMA ATUALIZAÇÃO</th>
-                                <th>SITUAÇÃO</th>
-                                <th>OPERAÇÃO AFETADA</th>
-                            </tr>
+                            {arrayObject.map((e) => {
+                                return (
+                                    <tr>
+                                        <th>{e.situation}</th>
+                                        <th>{e.lastUpdate}</th>
+                                        <th>{e.situation}</th>
+                                        <th>{e.affectedOperation}</th>
+                                    </tr>
+                                    
+                                )
+                            })}
+
                         </thead>
                         <tbody>
                             <tr>
@@ -42,6 +64,6 @@ const Modal = ({ onClose = () => { }, children }) => {
 
         </div>
     )
-}
 
+}
 export default Modal;
